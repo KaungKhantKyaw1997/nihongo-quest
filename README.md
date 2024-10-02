@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nihongo Quest
 
-## Getting Started
+**Nihongo Quest** is a fun quiz game to help you learn Japanese characters like **Hiragana**, **Katakana**, and **Kanji**. It gives you random characters, and you have to pick the correct answer from multiple options.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Choose from **Hiragana**, **Katakana**, or **Kanji** characters.
+- Select the difficulty: **Basic** or **Advanced**.
+- See a new random character with answer choices.
+- Get instant feedback if your answer is right or wrong.
+- Refresh the quiz to get a new character and try again.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to Use
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Select Character Type**: Pick either Hiragana, Katakana, or Kanji.
+2. **Select Difficulty**: Choose Basic or Advanced.
+3. **Answer the Quiz**: Click on an answer option to see if it’s correct.
+4. **Refresh**: Click the refresh button to get a new question.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Install
 
-## Learn More
+1. **Clone the Repository**:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/KaungKhantKyaw1997/nihongo-quest.git
+   cd nihongo-quest
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install Dependencies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Start the App**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Access the App**: Open your browser and go to `http://localhost:3000` to see the app.
+
+## API Information
+
+The app uses the **NihongoX API** to get random characters. It asks for characters based on the type and level you choose.
