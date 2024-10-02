@@ -1,5 +1,6 @@
 "use client";
 import SelectBox from "../components/SelectBox";
+import SwitchToggle from "../components/SwitchToggle";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
@@ -19,6 +20,7 @@ export default function Home() {
   const [options, setOptions] = useState<string[]>([]);
   const [correct, setCorrect] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
+  const [isJapanese, setIsJapanese] = useState<boolean>(true);
 
   const typeOptions = [
     { value: "hiragana", label: "Hiragana" },
@@ -31,21 +33,23 @@ export default function Home() {
     { value: "advanced", label: "Advanced" },
   ];
 
-  const handleTypeChange = (value: CharacterType) => {
-    setSelectedType(value);
+  const handleTypeChange = (value: string) => {
+    setSelectedType(value as CharacterType);
   };
 
-  const handleLevelChange = (value: LevelType) => {
-    setSelectedLevel(value);
+  const handleLevelChange = (value: string) => {
+    setSelectedLevel(value as LevelType);
   };
 
   const fetchCharacterData = async () => {
     if (!selectedType || !selectedLevel) return;
 
+    const endpoint = isJapanese
+      ? `https://nihongo-x.onrender.com/api/jpn-random-character/${selectedType}?level=${selectedLevel}&count=6`
+      : `https://nihongo-x.onrender.com/api/eng-random-character/${selectedType}?level=${selectedLevel}&count=6`;
+
     try {
-      const response = await fetch(
-        `https://nihongo-x.onrender.com/api/random-character/${selectedType}?level=${selectedLevel}&count=6`
-      );
+      const response = await fetch(endpoint);
       const data: CharacterData = await response.json();
 
       setCharacter(data.character);
@@ -59,7 +63,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchCharacterData();
-  }, [selectedType, selectedLevel]);
+  }, [selectedType, selectedLevel, isJapanese]);
 
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);
@@ -86,6 +90,15 @@ export default function Home() {
           onChange={handleLevelChange}
         />
       </div>
+
+      {character && (
+        <div className="flex items-center justify-center mt-2">
+          <SwitchToggle
+            isChecked={isJapanese}
+            onToggle={() => setIsJapanese((prev) => !prev)}
+          />
+        </div>
+      )}
 
       {character && (
         <div className="flex flex-col items-center justify-center w-full mb-16 mt-8">

@@ -6,6 +6,7 @@
 
 - Choose from **Hiragana**, **Katakana**, or **Kanji** characters.
 - Select the difficulty: **Basic** or **Advanced**.
+- Toggle between Japanese and English modes using the switch toggle feature.
 - See a new random character with answer choices.
 - Get instant feedback if your answer is right or wrong.
 - Refresh the quiz to get a new character and try again.
@@ -14,8 +15,9 @@
 
 1. **Select Character Type**: Pick either Hiragana, Katakana, or Kanji.
 2. **Select Difficulty**: Choose Basic or Advanced.
-3. **Answer the Quiz**: Click on an answer option to see if it’s correct.
-4. **Refresh**: Click the refresh button to get a new question.
+3. **Switch Language**: Use the toggle switch to change the language mode between Japanese and English.
+4. **Answer the Quiz**: Click on an answer option to see if it’s correct.
+5. **Refresh**: Click the refresh button to get a new question.
 
 ## How to Install
 
@@ -42,4 +44,4 @@
 
 ## API Information
 
-The app uses the **NihongoX API** to get random characters. It asks for characters based on the type and level you choose.
+The app uses the **NihongoX API** to get random characters. It requests characters based on the type and level you choose, and it displays them according to the selected language.

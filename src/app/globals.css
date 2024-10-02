@@ -28,7 +28,5 @@ h1 {
   -webkit-text-stroke-width: calc(1em / 14);
   font-weight: bold;
   line-height: 1.2;
-  /* Adjust line height to provide more vertical space */
   padding-bottom: 0.2em;
-  /* Add padding to prevent clipping of descenders */
 }
