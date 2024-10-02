@@ -3,13 +3,22 @@ import SelectBox from "../components/SelectBox";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+type CharacterType = "hiragana" | "katakana" | "kanji";
+type LevelType = "basic" | "advanced";
+
+interface CharacterData {
+  character: string;
+  options: string[];
+  correct: string;
+}
+
 export default function Home() {
-  const [selectedType, setSelectedType] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState("");
-  const [character, setCharacter] = useState("");
-  const [options, setOptions] = useState([]);
-  const [correct, setCorrect] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedType, setSelectedType] = useState<CharacterType | null>(null);
+  const [selectedLevel, setSelectedLevel] = useState<LevelType | null>(null);
+  const [character, setCharacter] = useState<string>("");
+  const [options, setOptions] = useState<string[]>([]);
+  const [correct, setCorrect] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string>("");
 
   const typeOptions = [
     { value: "hiragana", label: "Hiragana" },
@@ -22,11 +31,11 @@ export default function Home() {
     { value: "advanced", label: "Advanced" },
   ];
 
-  const handleTypeChange = (value: any) => {
+  const handleTypeChange = (value: CharacterType) => {
     setSelectedType(value);
   };
 
-  const handleLevelChange = (value: any) => {
+  const handleLevelChange = (value: LevelType) => {
     setSelectedLevel(value);
   };
 
@@ -37,7 +46,7 @@ export default function Home() {
       const response = await fetch(
         `https://nihongo-x.onrender.com/api/random-character/${selectedType}?level=${selectedLevel}&count=6`
       );
-      const data = await response.json();
+      const data: CharacterData = await response.json();
 
       setCharacter(data.character);
       setOptions(data.options);
@@ -78,7 +87,7 @@ export default function Home() {
         />
       </div>
 
-      {character ? (
+      {character && (
         <div className="flex flex-col items-center justify-center w-full mb-16 mt-8">
           <div
             className="flex self-end cursor-pointer"
@@ -93,18 +102,21 @@ export default function Home() {
           </div>
           <div className="text-6xl font-bold text-red-500">{character}</div>
         </div>
-      ) : (
-        <div></div>
       )}
 
-      {options.length > 0 ? (
+      {options.length > 0 && (
         <div className="grid w-full grid-cols-3 gap-2">
           {options.map((option, index) => {
-            let borderRadiusClass = "";
-            if (index === 0) borderRadiusClass = "rounded-tl-lg";
-            if (index === 2) borderRadiusClass = "rounded-tr-lg";
-            if (index === 3) borderRadiusClass = "rounded-bl-lg";
-            if (index === 5) borderRadiusClass = "rounded-br-lg";
+            const borderRadiusClass =
+              index === 0
+                ? "rounded-tl-lg"
+                : index === 2
+                ? "rounded-tr-lg"
+                : index === 3
+                ? "rounded-bl-lg"
+                : index === 5
+                ? "rounded-br-lg"
+                : "";
 
             const bgColorClass = selectedOption
               ? option === correct
@@ -125,8 +137,6 @@ export default function Home() {
             );
           })}
         </div>
-      ) : (
-        <div></div>
       )}
     </div>
   );
