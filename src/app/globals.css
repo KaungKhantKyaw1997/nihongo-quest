@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --gradient: linear-gradient(to left, white, red);
+  --neon-text: red;
 }
 
 * {
@@ -14,19 +14,55 @@
 
 body {
   margin: auto;
-  padding: 4rem 1rem;
+  padding: 3rem 1rem;
   width: 500px;
   max-width: calc(100% - 2rem);
 }
 
-h1 {
-  background-clip: text;
-  background-image: var(--gradient);
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-stroke-color: transparent;
-  -webkit-text-stroke-width: calc(1em / 14);
-  font-weight: bold;
-  line-height: 1.2;
-  padding-bottom: 0.2em;
+.neon {
+  color: white;
+  animation: glow 1s infinite alternate;
+}
+
+.neon:hover {
+  animation: flicker 1.5s infinite alternate;
+  cursor: crosshair;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 0.1em white, 0 0 0.2em var(--neon-text),
+      0 0 0.3em var(--neon-text), 0 0 0.3em var(--neon-text),
+      0 0 0.75em var(--neon-text), 0 0 0.9em var(--neon-text),
+      0 0 1em var(--neon-text);
+  }
+
+  100% {
+    text-shadow: 0 0 0.15em white, 0 0 0.3em var(--neon-text),
+      0 0 0.4em var(--neon-text), 0 0 0.4em var(--neon-text),
+      0 0 0.8em var(--neon-text), 0 0 0.9em var(--neon-text),
+      0 0 1em var(--neon-text);
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 0.1em white, 0 0 0.2em var(--neon-text),
+      0 0 0.3em var(--neon-text), 0 0 0.3em var(--neon-text),
+      0 0 0.75em var(--neon-text), 0 0 0.9em var(--neon-text),
+      0 0 1em var(--neon-text);
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
 }

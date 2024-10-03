@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface Option {
@@ -11,6 +11,7 @@ interface SelectBoxProps {
   label: string;
   placeholder: string;
   onChange?: (value: string) => void;
+  defaultValue?: string;
 }
 
 const SelectBox: React.FC<SelectBoxProps> = ({
@@ -18,8 +19,13 @@ const SelectBox: React.FC<SelectBoxProps> = ({
   label,
   placeholder,
   onChange,
+  defaultValue = "",
 }) => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string>(defaultValue);
+
+  useEffect(() => {
+    setSelectedOption(defaultValue);
+  }, [defaultValue]);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;

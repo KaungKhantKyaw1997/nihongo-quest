@@ -14,13 +14,14 @@ interface CharacterData {
 }
 
 export default function Home() {
-  const [selectedType, setSelectedType] = useState<CharacterType | null>(null);
-  const [selectedLevel, setSelectedLevel] = useState<LevelType | null>(null);
+  const [selectedType, setSelectedType] = useState<CharacterType>("hiragana");
+  const [selectedLevel, setSelectedLevel] = useState<LevelType>("basic");
   const [character, setCharacter] = useState<string>("");
   const [options, setOptions] = useState<string[]>([]);
   const [correct, setCorrect] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [isJapanese, setIsJapanese] = useState<boolean>(true);
+  const [refresh, setRefresh] = useState<number>(0);
 
   const typeOptions = [
     { value: "hiragana", label: "Hiragana" },
@@ -63,7 +64,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchCharacterData();
-  }, [selectedType, selectedLevel, isJapanese]);
+  }, [selectedType, selectedLevel, isJapanese, refresh]);
 
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);
@@ -71,8 +72,8 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex justify-center items-end mb-8">
-        <h1 className="text-3xl md:text-5xl font-bold tracking-wider">
+      <div className="flex justify-center items-end mb-12">
+        <h1 className="neon text-3xl md:text-5xl font-bold tracking-wider">
           Nihongo Quest
         </h1>
       </div>
@@ -82,12 +83,14 @@ export default function Home() {
           label="Choose a Type"
           placeholder="Select type..."
           onChange={handleTypeChange}
+          defaultValue="hiragana"
         />
         <SelectBox
           options={levelOptions}
           label="Choose a Level"
           placeholder="Select level..."
           onChange={handleLevelChange}
+          defaultValue="basic"
         />
       </div>
 
@@ -104,7 +107,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center w-full mb-16 mt-8">
           <div
             className="flex self-end cursor-pointer"
-            onClick={fetchCharacterData}
+            onClick={() => setRefresh((prev) => prev + 1)}
           >
             <Image
               src="/refresh.svg"
@@ -143,7 +146,7 @@ export default function Home() {
               <div
                 key={index}
                 onClick={() => handleOptionClick(option)}
-                className={`flex items-center justify-center p-4 text-lg font-semibold text-gray-700 cursor-pointer ${bgColorClass} ${borderRadiusClass}`}
+                className={`flex items-center justify-center p-4 text-lg font-semibold text-gray-700 cursor-pointer ${bgColorClass} ${borderRadiusClass} transition-transform transform hover:scale-105 active:scale-95`}
               >
                 {option}
               </div>
