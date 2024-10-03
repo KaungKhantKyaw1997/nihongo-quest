@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --neon-text: red;
+  --neon-text: #EF4444;
 }
 
 * {

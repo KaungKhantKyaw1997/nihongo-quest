@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex justify-center items-end mb-12">
-        <h1 className="neon text-3xl md:text-5xl font-bold tracking-wider">
+        <h1 className="neon text-3xl md:text-5xl font-bold tracking-wider font-[family-name:var(--font-japan-rich)]">
           Nihongo Quest
         </h1>
       </div>

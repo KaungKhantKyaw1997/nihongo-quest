@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const japanRich = localFont({
+  src: "./fonts/JapanRich-Regular.woff",
+  variable: "--font-japan-rich",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Nihongo Quest",
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${japanRich.variable} antialiased`}>{children}</body>
     </html>
   );
 }
