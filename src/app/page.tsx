@@ -4,7 +4,7 @@ import SwitchToggle from "../components/SwitchToggle";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-type CharacterType = "hiragana" | "katakana" | "kanji";
+type CharacterType = "hiragana" | "katakana";
 type LevelType = "basic" | "advanced";
 
 interface CharacterData {
@@ -22,11 +22,11 @@ export default function Home() {
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [isJapanese, setIsJapanese] = useState<boolean>(true);
   const [refresh, setRefresh] = useState<number>(0);
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const typeOptions = [
     { value: "hiragana", label: "Hiragana" },
     { value: "katakana", label: "Katakana" },
-    { value: "kanji", label: "Kanji" },
   ];
 
   const levelOptions = [
@@ -57,6 +57,7 @@ export default function Home() {
       setOptions(data.options);
       setCorrect(data.correct);
       setSelectedOption("");
+      setSuccessMessage("");
     } catch (error) {
       console.error("Error fetching character data:", error);
     }
@@ -68,6 +69,17 @@ export default function Home() {
 
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);
+
+    if (option === correct) {
+      setSuccessMessage("Correct! Well done!");
+
+      setTimeout(() => {
+        setSuccessMessage("");
+        setRefresh((prev) => prev + 1);
+      }, 500);
+    } else {
+      setSuccessMessage("Wrong! Try again!");
+    }
   };
 
   return (
@@ -135,7 +147,7 @@ export default function Home() {
                 : "";
 
             const bgColorClass = selectedOption
-              ? option === correct
+              ? option === correct && option === selectedOption
                 ? "text-green-400"
                 : option === selectedOption
                 ? "text-red-400"
@@ -152,6 +164,20 @@ export default function Home() {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {successMessage && (
+        <div className="text-center mt-4">
+          <span
+            className={
+              successMessage === "Correct! Well done!"
+                ? "text-green-500"
+                : "text-red-500"
+            }
+          >
+            {successMessage}
+          </span>
         </div>
       )}
     </div>

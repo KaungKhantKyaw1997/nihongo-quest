@@ -1,10 +1,10 @@
 # Nihongo Quest
 
-**Nihongo Quest** is a fun quiz game to help you learn Japanese characters like **Hiragana**, **Katakana**, and **Kanji**. It gives you random characters, and you have to pick the correct answer from multiple options.
+**Nihongo Quest** is a fun quiz game to help you learn Japanese characters like **Hiragana** and **Katakana**. It gives you random characters, and you have to pick the correct answer from multiple options.
 
 ## Features
 
-- Choose from **Hiragana**, **Katakana**, or **Kanji** characters.
+- Choose from **Hiragana** or **Katakana** characters.
 - Select the difficulty: **Basic** or **Advanced**.
 - Toggle between Japanese and English modes using the switch toggle feature.
 - See a new random character with answer choices.
@@ -13,7 +13,7 @@
 
 ## How to Use
 
-1. **Select Character Type**: Pick either Hiragana, Katakana, or Kanji.
+1. **Select Character Type**: Pick either Hiragana or Katakana.
 2. **Select Difficulty**: Choose Basic or Advanced.
 3. **Switch Language**: Use the toggle switch to change the language mode between Japanese and English.
 4. **Answer the Quiz**: Click on an answer option to see if it’s correct.
