@@ -2,7 +2,7 @@
   "name": "nihongo-quest",
   "version": "1.0.1",
   "private": true,
-  "description": "Nihongo Quest is an interactive Japanese language learning app focusing on character recognition and quiz functionality, featuring both Hiragana and Katakana modes.",
+  "description": "A quiz app to help users learn Japanese characters: Hiragana and Katakana.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,10 +11,8 @@
   },
   "keywords": [
     "japanese",
-    "language-learning",
-    "hiragana",
-    "katakana",
-    "quiz"
+    "quiz",
+    "characters"
   ],
   "author": "Kaung Khant Kyaw",
   "license": "MIT",
