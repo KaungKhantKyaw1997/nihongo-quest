@@ -10,6 +10,8 @@
     "lint": "next lint"
   },
   "keywords": [
+    "nihongo-x",
+    "tailwind-css",
     "japanese",
     "quiz",
     "characters"
