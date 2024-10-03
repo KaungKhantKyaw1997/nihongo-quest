@@ -136,17 +136,17 @@ export default function Home() {
 
             const bgColorClass = selectedOption
               ? option === correct
-                ? "bg-green-100"
+                ? "text-green-400"
                 : option === selectedOption
-                ? "bg-red-100"
-                : "bg-gray-100"
-              : "bg-gray-100";
+                ? "text-red-400"
+                : "text-gray-400"
+              : "text-gray-400";
 
             return (
               <div
                 key={index}
                 onClick={() => handleOptionClick(option)}
-                className={`flex items-center justify-center p-4 text-lg font-semibold text-gray-700 cursor-pointer ${bgColorClass} ${borderRadiusClass} transition-transform transform hover:scale-105 active:scale-95`}
+                className={`flex items-center justify-center p-4 text-lg font-semibold bg-[color:var(--secondary-black)] cursor-pointer ${bgColorClass} ${borderRadiusClass} transition-transform transform hover:scale-105 active:scale-95`}
               >
                 {option}
               </div>

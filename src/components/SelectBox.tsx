@@ -37,14 +37,14 @@ const SelectBox: React.FC<SelectBoxProps> = ({
 
   return (
     <div className="w-full max-w-sm mx-auto">
-      <label className="block text-sm font-medium text-gray-700 mb-2">
+      <label className="block text-sm font-medium text-gray-400 mb-2">
         {label}
       </label>
       <div className="relative">
         <select
           value={selectedOption}
           onChange={handleSelectChange}
-          className="block appearance-none w-full bg-gray-100 text-black py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring focus:ring-gray-200"
+          className="block appearance-none w-full bg-[color:var(--secondary-black)] text-white py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-2 focus:ring-gray-700"
         >
           <option value="" disabled>
             {placeholder}

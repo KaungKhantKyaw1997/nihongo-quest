@@ -8,7 +8,7 @@ interface SwitchToggleProps {
 
 const SwitchToggle: React.FC<SwitchToggleProps> = ({ isChecked, onToggle }) => {
   return (
-    <label className="themeSwitcherTwo shadow-card relative inline-flex cursor-pointer select-none items-center justify-center rounded-lg bg-gray-100 p-1">
+    <label className="themeSwitcherTwo shadow-card relative inline-flex cursor-pointer select-none items-center justify-center rounded-lg bg-[color:var(--secondary-black)] p-1">
       <input
         type="checkbox"
         className="sr-only"
@@ -17,7 +17,9 @@ const SwitchToggle: React.FC<SwitchToggleProps> = ({ isChecked, onToggle }) => {
       />
       <span
         className={`flex items-center space-x-[6px] rounded-md py-1 px-[16px] text-sm font-medium ${
-          isChecked ? "text-primary bg-red-100" : "text-body-color"
+          isChecked
+            ? "text-white bg-[color:var(--primary-black)]"
+            : "text-gray-400"
         }`}
       >
         <Image
@@ -31,7 +33,9 @@ const SwitchToggle: React.FC<SwitchToggleProps> = ({ isChecked, onToggle }) => {
       </span>
       <span
         className={`flex items-center space-x-[6px] rounded-md py-1 px-[16px] text-sm font-medium ${
-          !isChecked ? "text-primary bg-red-100" : "text-body-color"
+          !isChecked
+            ? "text-white bg-[color:var(--primary-black)]"
+            : "text-gray-400"
         }`}
       >
         <Image

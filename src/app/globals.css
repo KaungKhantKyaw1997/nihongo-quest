@@ -6,6 +6,8 @@
 
 :root {
   --neon-text: #EF4444;
+  --primary-black: #13151a;
+  --secondary-black: #23262d;
 }
 
 * {
@@ -17,6 +19,7 @@ body {
   padding: 3rem 1rem;
   width: 500px;
   max-width: calc(100% - 2rem);
+  background-color: var(--primary-black);
 }
 
 .neon {
