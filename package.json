@@ -2,7 +2,7 @@
   "name": "nihongo-quest",
   "version": "1.0.1",
   "private": true,
-  "description": "A quiz app to help users learn Japanese characters: Hiragana and Katakana.",
+  "description": "Interactive quiz app for learning and practicing Japanese characters.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
