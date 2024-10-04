@@ -10,11 +10,11 @@
     "lint": "next lint"
   },
   "keywords": [
-    "nihongo-x",
-    "tailwind-css",
     "japanese",
-    "quiz",
-    "characters"
+    "character-quiz",
+    "language-learning",
+    "nihongo-x",
+    "tailwind-css"
   ],
   "author": "Kaung Khant Kyaw",
   "license": "MIT",
