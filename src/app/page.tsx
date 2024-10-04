@@ -1,6 +1,10 @@
 "use client";
+import dynamic from "next/dynamic";
 import SelectBox from "../components/SelectBox";
 import SwitchToggle from "../components/SwitchToggle";
+const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {
+  ssr: false,
+});
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
@@ -23,6 +27,7 @@ export default function Home() {
   const [isJapanese, setIsJapanese] = useState<boolean>(true);
   const [refresh, setRefresh] = useState<number>(0);
   const [successMessage, setSuccessMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const typeOptions = [
     { value: "hiragana", label: "Hiragana" },
@@ -49,6 +54,8 @@ export default function Home() {
       ? `https://nihongo-x.onrender.com/api/jpn-random-character/${selectedType}?level=${selectedLevel}&count=6`
       : `https://nihongo-x.onrender.com/api/eng-random-character/${selectedType}?level=${selectedLevel}&count=6`;
 
+    setLoading(true);
+
     try {
       const response = await fetch(endpoint);
       const data: CharacterData = await response.json();
@@ -60,6 +67,8 @@ export default function Home() {
       setSuccessMessage("");
     } catch (error) {
       console.error("Error fetching character data:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -115,8 +124,8 @@ export default function Home() {
         </div>
       )}
 
-      {character && (
-        <div className="flex flex-col items-center justify-center w-full mb-16 mt-8">
+      <div className="flex flex-col items-center justify-center w-full mb-16 mt-8">
+        {character && (
           <div
             className="flex self-end cursor-pointer"
             onClick={() => setRefresh((prev) => prev + 1)}
@@ -128,9 +137,14 @@ export default function Home() {
               height={32}
             />
           </div>
+        )}
+
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
           <div className="text-6xl font-bold text-red-500">{character}</div>
-        </div>
-      )}
+        )}
+      </div>
 
       {options.length > 0 && (
         <div className="grid w-full grid-cols-3 gap-2">
